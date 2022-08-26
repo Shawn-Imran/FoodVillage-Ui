@@ -1,0 +1,224 @@
+<!---********* check-out-form-area ********-->
+<section class="check-form-area">
+  <div class="container">
+
+    <!--********* form ********-->
+    <div class="form">
+      <!--********* form-main ********-->
+      <div class="check-form-main">
+
+        <!--******************** billing-area ***********************-->
+        <div class="billing-area">
+          <div class="bil-title">
+            <h2>Shipping Address</h2>
+          </div> <!-- END CARD HEADER AREA -->
+
+          <div class="address">
+
+            <div class="card-action">
+              <button type="button" mat-button color="primary" (click)="openAddNewAddressDialog()">
+                <mat-icon>add</mat-icon>
+                Add New Address
+              </button>
+            </div>
+
+            <ng-container *ngIf="userAddress && userAddress.length > 0 else noAddress">
+              <div
+                class="address-list gap"
+                fxLayout="row"
+                fxLayoutAlign="start center"
+                *ngFor="let address of userAddress; let i = index">
+                <div class="select-area">
+
+                  <mat-radio-group aria-label="Select an option">
+                    <mat-radio-button
+                      (change)="onChangeAddress($event)"
+                      [value]="i"
+                      [checked]="selectedAddressIndex === i">
+                      {{address.addressType | address}}
+                    </mat-radio-button>
+                  </mat-radio-group>
+
+                </div>
+                <div class="info">
+                  <p>Address Type: {{address.addressType | address}}</p>
+                  <p>City: {{address.city | titlecase}}</p>
+                  <p>Post Code: {{address.postCode ? address.postCode : 'N/A'}}</p>
+                  <p>Primary Phone No: {{address.phoneNo}}</p>
+                  <p>Secondary Phone No:{{address.alternativePhoneNo ? address.alternativePhoneNo : 'N/A'}}</p>
+                  <p>Shipping Address{{address.shippingAddress | titlecase}}</p>
+                </div>
+                <div class="list-action" fxLayout.lt-md="column" fxLayout="row wrap" fxLayoutGap="10px">
+                  <button mat-mini-fab color="primary" (click)="openAddNewAddressDialog(address)">
+                    <mat-icon>create</mat-icon>
+                  </button>
+                  <button mat-mini-fab color="warn" (click)="openConfirmDialog(address?._id)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div> <!-- END ADDRESS ITEM -->
+            </ng-container>
+
+
+          </div> <!-- END ADDRESS CONTAINER -->
+
+          <!--coupon and update-->
+          <div class="cart-cupon-and-btn-section clearfix" *ngIf="carts && carts.length > 0">
+            <div class="coupon">
+              <div class="coupon-details">
+                <div class="coupon-input">
+                  <input type="text" name="couponCode" placeholder="Coupon code" [(ngModel)]="couponText" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="coupon-btn" *ngIf="!couponData">
+                  <button style="width: 160px;" type="button" (click)="applyCoupon()">Apply Coupon</button>
+                </div>
+                <div class="coupon-btn" *ngIf="couponData">
+                  <button type="button" style="width: 160px; margin-left: 5px; border: 1px solid #d21010; background-color: #d21010;" (click)="removeCoupon()">Remove Coupon</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--order-notes-->
+          <div class="order-notes">
+            <h3>ADDITIONAL INFORMATION</h3>
+            <div>
+              <mat-form-field appearance="outline">
+                <mat-label>Order notes (optional) <span>*</span></mat-label>
+                <textarea [(ngModel)]="orderNotes" matInput value="" rows="2" cols="5"
+                          placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+
+        </div><!--******* billing-area-end******-->
+
+
+        <!--********************************* order-area ******************************************-->
+
+        <div class="order-area">
+          <!--******* order-main *******-->
+          <div class="order-main">
+            <!--******** order-title area ******-->
+            <div class="order-title">
+              <h2>YOUR ORDER</h2>
+            </div>
+            <!--order-price-details-->
+            <div class="price-area">
+              <!--** product-price-area ****-->
+              <div class="product-price clearfix">
+
+                <div class="product">
+                  <h2>Product</h2>
+                </div>
+                <div class="price">
+                  <h2>Total</h2>
+                </div>
+
+              </div>
+
+              <!--** product--name ****-->
+              <div *ngFor="let c of carts" class="product-price clearfix">
+
+                <div class="product">
+                  <span>{{c?.product?.productName}} <span id="item">× {{c?.selectedQty}}</span></span>
+                </div>
+                <div class="price">
+                  <span>৳ {{((c?.product | price: 'priceWithDiscount') * c?.selectedQty) | number : '': 'bn'}}</span>
+                </div>
+              </div>
+
+
+              <!--** product-Cart Subtotal ****-->
+              <div class="product-price clearfix">
+                <div class="product">
+                  <h2>Cart Subtotal</h2>
+                </div>
+                <div class="price">
+                  <h2>৳ {{cartSubTotal | number : '': 'bn'}}</h2>
+                </div>
+              </div>
+
+              <div class="product-price clearfix">
+                <div class="product">
+                  <h2>Shipping Charge</h2>
+                </div>
+                <div class="price">
+                  <h2>৳ {{shippingCharge | number : '': 'bn'}}</h2>
+                </div>
+              </div>
+
+              <!--** order-total ****-->
+              <div class="product-price borderles clearfix">
+                <div class="product">
+                  <h2> Order Total</h2>
+                </div>
+                <div class="price">
+                  <h2>৳ {{cartSubTotal + shippingCharge | number : '': 'bn'}}</h2>
+                </div>
+              </div>
+
+              
+
+
+
+            </div> <!--order-price-details-end-->
+
+            <div class="payment-type">
+              <div class="title">
+                <h2>Select payment type</h2>
+              </div>
+              <mat-radio-group class="radio-group-area" aria-label="Select payment method"
+                               [(ngModel)]="selectedPaymentType">
+                <mat-radio-button *ngFor="let data of paymentTypes" [value]="data.value">
+                  <span>{{data.viewValue}}</span>
+                </mat-radio-button>
+              </mat-radio-group>
+            </div>
+
+            <!--order-other-details-->
+            <div class="order-other-details">
+              <label for="asa"><span style="color: orangered">Cash on delivery is currently unavailable.</span> Local or
+                International Debit/Credit/VISA/Master Card, bKash, DBBL etc
+                <img style="width: 140px;" src="/assets/images/png/sslcz-verified.png" alt="" id="asa">
+                Pay securely by Credit/Debit card, Internet banking or Mobile banking through SSLCommerz.
+              </label>
+              <div>
+                <label for="asas">
+                  Your personal data will be used to process your order, support your experience throughout this
+                  website, and for other purposes described in our
+                  <a id="asas" href="#">privacy policy.</a>
+                </label>
+              </div>
+
+              <div class="check">
+                <mat-checkbox [(ngModel)]="isAccept" style="margin-right: 10px;"></mat-checkbox>
+                <label id="privacy">
+                  I have read and agree to the website
+                  <a routerLink="/pages/terms-and-conditions" target="_blank">terms and conditions,</a>
+                  <a routerLink="/pages/return-&-refund-policy" target="_blank"> Return & Refund Policy, </a>
+                  <a routerLink="/pages/privacy-policy" target="_blank"> and privacy policy <span
+                    style="color: #eb2a2e;">*</span></a>
+                </label>
+              </div>
+            </div><!--order-other-details-end-->
+
+            <!--******* submit-btn ******-->
+            <div class="submit-btn">
+              <button type="button" (click)="placeOrder()">place order</button>
+            </div>
+
+          </div>
+        </div><!--**************** order-area-end *************-->
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<ng-template #noAddress>
+  <h2>No Address Found! Please add an address</h2>
+</ng-template>

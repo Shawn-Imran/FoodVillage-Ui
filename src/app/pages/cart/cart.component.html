@@ -1,0 +1,145 @@
+
+<section class="cart-section" *ngIf="carts && carts.length > 0 else cartEmpty">
+  <div class="container">
+
+    <form>
+      <!--cart-section-main-->
+      <div class="cart-main-section">
+        <!--cart-title-and-menu-->
+        <div class="cart-title-menu clearfix">
+          <!--cart-title-->
+          <div class="cart-title">
+            <h2>Cart</h2>
+          </div>
+          <!--cart-menu-->
+          <div class="cart-menu">
+            <ul>
+              <li><a routerLink="/" target="_blank">Home <span><i class="fa fa-angle-double-right"></i></span></a></li>
+              <li><a href="javascript:" target="_blank">Cart</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!---cart-product-details-->
+        <div class="cart-product-details">
+          <!--cart-product-head-->
+          <div class="cart-product-head">
+            <div class="product-remove display-none"></div>
+            <div class="product-thumnil display-none"></div>
+            <div class="product-title display-none">
+              <h2>Product</h2>
+            </div>
+            <div class="product-price display-none">
+              <h2>Price</h2>
+            </div>
+            <div class="product-Quantity display-none">
+              <h2>Quantity</h2>
+            </div>
+            <div class="product-subtotal display-none">
+              <h2> Subtotal</h2>
+            </div>
+          </div>
+          <!--cart-product-body-->
+          <div *ngFor="let c of carts; let i = index;" class="cart-product-body">
+            <!--remove-->
+            <div class="product-remove change-height width-change" (click)="onDeleteCartItem(c?._id, c?.product?._id)">
+              <span>X</span>
+            </div>
+            <!--thumnil-->
+            <div class="product-thumnil change-height width-change">
+              <img
+                [src]="product?.images">
+            </div>
+            <!--product-title-->
+            <div class="product-title change-height width-change">
+              <h2>Product:</h2>
+              <a href="javascript:">{{c?.product?.productName}}</a>
+            </div>
+            <!---product-price-->
+            <div class="product-price change-height width-change">
+              <h2>Price:</h2>
+              <span>৳{{c?.product}}</span>
+            </div>
+
+            <!--quantity-->
+            <div class="product-Quantity change-height width-change">
+              <h2>Quantity:</h2>
+              <div class="quantity-btn ">
+                <div>
+                  <button id="cart-mines" type="button" (click)="decrementQty(c?._id, i, c?.selectedQty)">-</button>
+                </div>
+                <div>
+                  <input type="text" name="item" [value]="c?.selectedQty" id="cart-value">
+                </div>
+                <div>
+                  <button type="button" id="cart-plus" (click)="incrementQty(c?._id, i)">+</button>
+                </div>
+              </div>
+            </div>
+            <!--subtotal-->
+            <div class="product-subtotal change-height width-change">
+              <h2>Subtotal:</h2>
+              <span>৳{{((c?.product ) * c?.selectedQty)}}</span>
+            </div>
+          </div> <!-- ITEM 1 -->
+
+         
+
+        </div><!---end-->
+      </div>
+    </form>
+  </div>
+</section> <!-- END CART ITEM VIEW -->
+
+<!--cart-section2-->
+<div class="cart-section2" fxHide [fxShow]="carts && carts.length > 0">
+  <div class="container">
+    <div class="cart-section2-main">
+      <!--section2-title-->
+      <div class="cart-section2-title">
+        <h2>CART TOTALS</h2>
+      </div>
+      <!--cart-section2-table-->
+      <div class="cart-section2-table">
+        <table>
+          <tr class="clearfix">
+            <th>Subtotal</th>
+            <td><p>৳{{cartSubTotal}}</p></td>
+          </tr>
+          <tr class="clearfix">
+            <th>Shipping</th>
+            <td>
+              <p>Flat rate (inside Dhaka) : <strong>৳{{shippingChargeData?.deliveryInDhaka}}</strong></p>
+              <p>Note: Shipping outside Dhaka will be<strong>৳{{shippingChargeData?.deliveryOutsideDhaka}}</strong></p>
+              <p>Shipping options will be updated during checkout.</p>
+<!--              <h3>Calculate shipping</h3>-->
+            </td>
+          </tr>
+          <tr class="clearfix">
+            <th>Total</th>
+            <td><h3>৳{{(cartSubTotal + shippingCharge)}}</h3></td>
+          </tr>
+        </table>
+      </div>   <!--cart-section2-table-end-->
+
+      <!--cart-section2-->
+      <div class="cart-section2-btn">
+        <a [routerLink]="'/checkout'">Proceed to checkout</a>
+      </div>
+    </div>
+  </div>
+</div> <!-- END CALCULATION AREA -->
+
+
+<ng-template #cartEmpty>
+  <div class="empty-cart-card">
+    <div class="card-body">
+      <div class=" empty-cart-details">
+        <img src="/assets/images/png/empty-cart.png" class="img-fluid mb-4 mr-3">
+        <h3>Your Cart is Empty</h3>
+        <h4>Add something to make me happy :)</h4>
+        <a routerLink="/" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a>
+      </div>
+    </div>
+  </div>
+</ng-template>

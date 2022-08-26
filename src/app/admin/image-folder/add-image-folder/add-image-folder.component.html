@@ -1,0 +1,30 @@
+
+<!--<div class="nav">-->
+<!--  <app-breadcrumb-soft></app-breadcrumb-soft>-->
+<!--</div>-->
+
+<div style="position: relative">
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Folder</h1>
+    <mat-checkbox [(ngModel)]="autoSlug" (change)="autoGenerateSlug()" color="primary">Auto Slug</mat-checkbox>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="space-around center" autocomplete="off">
+    <mat-form-field appearance="outline">
+      <mat-label>Folder Name</mat-label>
+      <input formControlName="name" matInput placeholder="Enter folder name" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Folder Slug</mat-label>
+      <input formControlName="slug" matInput placeholder="Enter folder slug" required>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">{{id ? 'Update Folder' : 'Add Folder'}}</button>
+  </form>
+</div>
+
+

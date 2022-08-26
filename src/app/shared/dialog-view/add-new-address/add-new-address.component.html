@@ -1,0 +1,95 @@
+<div class="dialog-container">
+
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <h2>Shipping Info</h2>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </div>
+
+  <form [formGroup]="dataForm" (ngSubmit)="onSubmitAddress()" class="form" autocomplete="off">
+
+    <div class="form-input-area" fxLayout="row wrap">
+
+      <mat-radio-group
+        class=" form-radio px-1"
+        aria-label="Received Form"
+        fxFlex="100"
+        formControlName="addressType" required>
+        <mat-radio-button *ngFor="let d of addressTypes" [value]="d.value">{{d.viewValue}}</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Full name</mat-label>
+        <input formControlName="name" required matInput placeholder="Full name">
+        <mat-icon matSuffix>account_circle</mat-icon>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Phone Number (11 digit)</mat-label>
+        <input digitOnly formControlName="phoneNo" matInput placeholder="Phone No" type="tel" required [minlength]="11" [maxLength]="11">
+        <mat-icon matSuffix>call</mat-icon>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Phone Number (11 digit)</mat-label>
+        <input digitOnly formControlName="alternativePhoneNo" matInput placeholder="Phone No" type="tel" [minlength]="11" [maxLength]="11">
+        <mat-icon matSuffix>call</mat-icon>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" matInput placeholder="Email Address" type="email" required>
+        <mat-icon matSuffix>mail</mat-icon>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>City</mat-label>
+        <mat-select formControlName="city" required>
+          <mat-option *ngFor="let c of cities" [value]="c">{{c}}</mat-option>
+        </mat-select>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <!--      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">-->
+      <!--        <mat-label>Area</mat-label>-->
+      <!--        <mat-select formControlName="area" required (selectionChange)="onSelectArea($event)" (click)="onClickCity()">-->
+      <!--          <mat-option *ngFor="let a of areaTemp" [value]="a">{{a.name}}</mat-option>-->
+      <!--        </mat-select>-->
+      <!--        <mat-error>This field is required</mat-error>-->
+      <!--      </mat-form-field>-->
+
+      <!--      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">-->
+      <!--        <mat-label>Zone</mat-label>-->
+      <!--        <mat-select formControlName="zone">-->
+      <!--          <mat-option *ngFor="let z of zoneTemp" [value]="z">{{z}}</mat-option>-->
+      <!--        </mat-select>-->
+      <!--        <mat-error>This field is required</mat-error>-->
+      <!--      </mat-form-field>-->
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Post Code</mat-label>
+        <input formControlName="postCode" matInput placeholder="Post Code" type="text">
+        <mat-icon matSuffix>tag</mat-icon>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+        <mat-label>Shipping Address</mat-label>
+        <input formControlName="shippingAddress" matInput placeholder="Address" required>
+        <mat-icon matSuffix>location_on</mat-icon>
+        <mat-error>This field is required</mat-error>
+      </mat-form-field>
+
+    </div>
+    <div class="action-area">
+      <button mat-raised-button color="primary" type="submit" [disabled]="dataForm.invalid">
+        Save
+      </button>
+    </div>
+
+  </form>
+</div>

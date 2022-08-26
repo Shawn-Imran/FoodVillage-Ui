@@ -1,0 +1,78 @@
+<div class='container'>
+  <h2>Our Products</h2>
+  <swiper
+    [slidesPerView]="3"
+    [spaceBetween]="30"
+    [freeMode]="true"
+    [loop]="true"
+    [navigation]="true"
+    [pagination]="{
+      clickable: true
+    }"
+    [breakpoints]="{
+      '500': {
+        slidesPerView: 1,
+        spaceBetween: 20
+      },
+      '720': {
+        slidesPerView: 2,
+        spaceBetween: 40
+      },
+      '1024': {
+        slidesPerView: 3,
+        spaceBetween: 50
+      }
+    }"
+    class="mySwiper"
+  >
+    <ng-template swiperSlide *ngFor="let product of products">
+      <div class="polaroid">
+        <img [src]="product.images" alt="5 Terre" style="width:100%">
+        <div class="container">
+        <p>{{product.name}}</p>
+        <p>Price: {{product.price}}</p>
+        <br>
+        <button mat-raised-button id="btn-buy" (click)="buy()">Buy</button>
+        <br>
+        <button mat-raised-button id="btn-buy" (click)="addToCart()">Add to Cart</button>
+        </div>
+      </div>
+    </ng-template>
+    <!-- <ng-template swiperSlide>
+      <div class="polaroid">
+        <img src="\assets\slider\burger.jpg" alt="Norther Lights" style="width:100%">
+        <div class="container">
+        <p>Burger</p>
+        <p>Price: 100 TK</p>
+        <br>
+        <button mat-raised-button id="btn-buy" (click)="buy()">Buy</button>
+        <br>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="polaroid">
+        <img src="\assets\slider\steak.jpg" alt="Norther Lights" style="width:100%">
+        <div class="container">
+        <p>Steak</p>
+        <p>Price: 400 TK</p>
+        <br>
+        <button mat-raised-button id="btn-buy" (click)="buy()">Buy</button>
+        <br>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template swiperSlide>
+      <div class="polaroid">
+        <img src="\assets\slider\french fries.jpg" alt="Norther Lights" style="width:100%">
+        <div class="container">
+        <p>French fries</p>
+        <p>Price: 100 TK</p>
+        <br>
+        <button mat-raised-button id="btn-buy" (click)="buy()">Buy</button>
+        <br>
+        </div>
+      </div>
+    </ng-template> -->
+  </swiper>
+</div>

@@ -1,0 +1,68 @@
+<div class="cart-item">
+
+  <!--cart-product-details-->
+
+  <div class="cart-product-area">
+
+    <!---****** cart-product-left-area ********-->
+    <div class="cart-product-left">
+
+      <!-------*******cart-check********-->
+
+      <!--      <div class="cart-check">-->
+      <!--        <form action="#">-->
+      <!--          <div class="check-box">-->
+      <!--            <input type="checkbox" name="agree" value="" for="check">-->
+      <!--          </div>-->
+      <!--        </form>-->
+      <!--      </div>-->
+
+      <!---****cart-product-img********-->
+      <div class="cart-product-img">
+        <img [src]="data && data.product.primaryImages ? data?.product.primaryImages[0] : '/assets/images/placeholder/test.png'"
+             alt="fa90e1e22220d746624371f00e1dc78a.jpg">
+      </div>
+
+      <!---****cart-product-details********-->
+
+      <div class="cart-product-details">
+        <a href="#" target="_blank">{{data?.product.productName}}</a>
+        <h3>{{data?.product.vendor.vendorName}}, {{data?.variation?.filter?.key}}</h3>
+        <h4>Only {{data?.product.quantity}} item(s) in stock</h4>
+      </div>
+    </div>
+    <!----cart-product-right-->
+    <div class="cart-product-right clearfix">
+
+      <!---price-discount-->
+      <div class="price-discount">
+        <h3>৳ {{ ( (data?.product.price - data?.product.discountAmount) * data?.selectedQty ) }}</h3>
+        <del>৳ {{ ( data?.product.price * data?.selectedQty ) }}</del>
+        <span>-{{ ( (data?.product.discountAmount / data?.product.price) * 100 ) | number : '1.2-2' }}%</span>
+        <div class="del-menu">
+          <ul>
+            <li>
+              <button mat-icon-button>
+                <span> <i class="far fa-heart"></i></span>
+              </button>
+            </li>
+            <li>
+              <button mat-icon-button (click)="deleteById(data?._id)" >
+                <span><i class="far fa-trash-alt"></i></span>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!---*****count********-->
+      <div class="count">
+        <div class="quantity-value">
+          <button id="mines">-</button>
+          <span id="value">{{data?.selectedQty}}</span>
+          <button id="plush">+</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

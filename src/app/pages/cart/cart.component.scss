@@ -1,0 +1,39 @@
+@import "src/theme/cart";
+@import "src/theme/cart-calculation";
+@import "src/theme/exports/empty-cart";
+
+
+
+
+/**
+EMPTY CART DESIGN
+ */
+.empty {
+  padding: 100px 0;
+
+  h2 {
+    text-align: center;
+  }
+
+  .action {
+    margin-top: 25px;
+    text-align: center;
+
+    button {
+      padding: 6px;
+      min-width: 150px;
+    }
+  }
+}
+
+.no-summary {
+  h5 {
+    text-align: center;
+    padding: 100px 10px;
+  }
+}
+@media(min-width:960px) and (max-width:1440px){
+  .container{
+    width: 88%!important;
+  }
+}

@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+.login{
+
+  width: 450px;
+  .title{
+    width: 100%;
+    p{
+      text-align: center;
+      font-size: 30px;
+    }
+
+  }
+  mat-form-field{
+    width: 100%;
+  }
+
+  .button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

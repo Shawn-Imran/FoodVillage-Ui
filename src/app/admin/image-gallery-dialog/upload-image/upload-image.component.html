@@ -1,0 +1,47 @@
+<div class="dialog-container">
+  <div class="header">
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content">
+    <!-- in app.component.html -->
+<!--    <ngx-dropzone (change)="onSelect($event)">-->
+<!--      <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>-->
+<!--      <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">-->
+<!--        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>-->
+<!--      </ngx-dropzone-preview>-->
+<!--    </ngx-dropzone>-->
+
+
+    <mat-form-field appearance="outline" class="mat-select-folder">
+      <mat-label>Select Folder</mat-label>
+      <mat-select [(ngModel)]="selectedFolder" name="food">
+        <mat-option *ngFor="let f of folders" [value]="f._id">
+          {{f.name | titlecase}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <div class="custom-dropzone" ngx-dropzone [accept]="'image/*'" (change)="onSelect($event)">
+      <ngx-dropzone-label>
+        <div class="label">
+          <h2>Upload or Drug and Drop Here</h2>
+        </div>
+      </ngx-dropzone-label>
+
+      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+<!--        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>-->
+        <ngx-dropzone-label>{{ f.type }}</ngx-dropzone-label>
+      </ngx-dropzone-image-preview>
+    </div>
+
+    <div class="action">
+      <button type="button" mat-raised-button color="primary" (click)="onUploadImages()">
+        Upload Now
+      </button>
+    </div>
+
+  </div>
+</div>

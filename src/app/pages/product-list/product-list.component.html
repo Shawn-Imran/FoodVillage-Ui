@@ -1,0 +1,51 @@
+
+
+<div class="container-fluid">
+
+
+  <div class="main-content">
+
+    <div class="list-controll-var">
+
+      <ul>
+        <li><button [class.active]="viewType === 'grid'" (click)="onChangeViewType('grid')"><mat-icon>view_comfy</mat-icon></button></li>
+        <li><button [class.active]="viewType === 'list'" (click)="onChangeViewType('list')"><mat-icon>view_list</mat-icon></button></li>
+      </ul>
+    </div>
+
+    <div class="product-container" *ngIf="viewType === 'grid'">
+      <!-- {{products | json}} -->
+      <app-product-card-one
+        *ngFor="let product of products | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }"
+        [product]="product"></app-product-card-one>
+    </div> <!-- END Product Container -->
+
+    <!---grid-card-container-->
+    <div class="grid-card-container" *ngIf="viewType === 'list'">
+      <app-grid-card *ngFor="let product of products | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }"
+                     [product]="product"></app-grid-card>
+    </div><!----end-->
+
+
+  </div> <!-- END MAIN CONTAINER AREA -->
+</div>
+
+
+<div *ngIf="totalProducts > productsPerPage" fxLayout="row wrap" style="margin-top: 15px;">
+  <div fxFlex="100" class="p-1">
+    <mat-card class="p-0 text-center">
+
+      <pagination-controls
+        class="product-pagination"
+        autoHide="true" maxSize="20"
+        (pageChange)="onChangePage($event)">
+      </pagination-controls>
+
+    </mat-card>
+  </div>
+</div>
+
+
+<!-- MOBILE FILTER DIALOG Template -->
+
+

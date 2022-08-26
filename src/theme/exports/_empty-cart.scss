@@ -1,0 +1,66 @@
+@import "src/theme/variables";
+
+
+/*** start main coding ***/
+
+.empty-cart-card {
+  max-width: 340px;
+  margin: auto;
+  width: 100%;
+  background-color: #fff;
+  //box-shadow: 0 4px 6px 0 #eee;
+  padding: 20px;
+  box-sizing: border-box;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-cart-details {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.empty-cart-details img {
+  display: block;
+  max-width: 100px;
+  width: 100%;
+  margin: auto auto 10px;
+  object-fit: scale-down;
+}
+
+.empty-cart-details h3 {
+  color: #272822;
+  font-weight: 600;
+  font-family: $font-en-primary;
+  font-style: normal;
+  font-size: 20px;
+  display: block;
+  line-height: 32px;
+  margin-bottom: 7px;
+}
+
+.empty-cart-details h4 {
+  color: #272822;
+  font-size: 16px;
+  font-family: $font-en-primary;
+  font-style: normal;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.empty-cart-details a {
+  color: #fff;
+  background-color: #4466F2;
+  display: inline-block;
+  padding: 8px 15px;
+  font-family: $font-en-primary;
+  font-weight: 500;
+  font-size: 14px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  text-transform: uppercase;
+}

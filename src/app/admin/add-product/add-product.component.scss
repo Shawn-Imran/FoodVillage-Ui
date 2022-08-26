@@ -1,0 +1,171 @@
+
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0px;
+}
+
+.card{
+  min-width: 150px;
+  max-width: 550px;
+  margin-bottom: 40px;
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 3px 5px 0 rgb(0 0 0 / 10%),0 3px 5px 0 rgb(0 0 0 / 10%);
+
+  .register{
+    padding: 20px;
+  }
+}
+
+
+
+
+.card-title{
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.card-title mat-card-title{
+  font-weight: 600;
+  font-size: 20px;
+  font-style: normal;
+  text-transform: capitalize;
+  display: block;
+  margin-right: 10px;
+}
+.card-title mat-checkbox{
+  display: inline-block;
+  color: #858585;
+  font-weight: 400;
+  font-size: 14px;
+  margin-left: 5px;
+}
+.card-title mat-checkbox{
+  color: #858585;
+}
+
+.card-content{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.card-content h2{
+  text-transform:uppercase;
+  font-size: 15px;
+  display: block;
+  color: #000;
+  font-weight: 600;
+  margin: 0;
+  line-height: 20px;
+}
+.sub-title{
+  margin-bottom: 20px;
+}
+.card-content h2 span{
+  color: #858585;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: lowercase;
+}
+.plus-box{
+  height: 180px;
+  width: 150px;
+  background-color: #fff;
+  box-shadow: 0 4px 5px 0 #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.plus-box span{
+  color: #000;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.img-container {
+  width: 100%;
+  margin-top: 24px;
+  .preview {
+    position: relative;
+    width: 85%;
+    max-width: 150px;
+    margin: 0 auto;
+    height: 150px;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover {
+      .overlay-ac {
+        visibility: visible;
+      }
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .overlay-ac {
+      visibility: hidden;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background: rgba(6, 6, 6, 0.19);
+
+      button {
+        mat-icon {
+          color: orangered;
+        }
+      }
+    }
+  }
+
+}
+
+.filter-input-area {
+  width: 100%;
+
+  .mat-field-with-action {
+    display: flex;
+    button {
+      background: transparent;
+      border: none;
+      margin-top: -14px;
+      cursor: pointer;
+      color: #666;
+
+      &:hover {
+        color: #c20101;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.button {
+  display: flex;
+  justify-content: flex-end;
+}

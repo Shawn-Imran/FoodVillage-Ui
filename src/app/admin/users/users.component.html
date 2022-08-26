@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Users List</h2>
+  <table >
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Birthday</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of  users | paginate: { itemsPerPage: 2, currentPage: currentPage, totalItems: totalUsers }">
+        <td>{{data.first_name}}</td>
+        <td>{{data.last_name}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.birthday}}</td>
+        <td>
+          <div class="actions">
+            <button type="button" mat-raised-button color="primary"(click)="edit_user()">Edit</button>&nbsp;&nbsp;
+            <button type="button" mat-raised-button color="accent"(click)="view_user()">View</button>&nbsp;&nbsp;
+            <button type="button" mat-raised-button color="warm">Delete</button>&nbsp;&nbsp;
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <div class="button">
+    <button type="button" mat-raised-button color="primary" (click)="add_user()">Add New User</button>
+  </div>
+</div>
+

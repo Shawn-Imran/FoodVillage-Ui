@@ -1,0 +1,47 @@
+<div class="card">
+  <!--** card-img ***-->
+  <div class="card-img">
+    <!-- <a [routerLink]="['/product-details', product?.productSlug]"> -->
+    <a [routerLink]="['/', product?.name]">
+      <img [defaultImage]="'/assets/images/placeholder/test.png'" [lazyLoad]="product.images"
+           [alt]="product?.name"></a>
+    <!--** card-hover-img **-->
+    <div class="card-hover-img" *ngIf="product?.images && product?.images.length > 1">
+      <!-- <a [routerLink]="['/product-details', product?.productSlug]"> -->
+      <a [routerLink]="['/', product?.productSlug]">
+        <img [src]="product?.images"
+             [alt]="product?.name"></a>
+    </div>
+    <!--** discount-area **-->
+  </div>
+  <!--** card-body-area **-->
+  <div class="card-body">
+    <!--** card-rating **-->
+
+
+    <!--** Card-discription**-->
+    <div class="card-link">
+      <!-- <a [routerLink]="['/product-details', product?.productSlug]">{{product?.productName}}</a> -->
+      <a [routerLink]="['/', product?.name]">{{product?.name}}</a>
+    </div>
+    <!--** price-and-Icon-menu ***-->
+    <div class="price-icon">
+      <!--** price **-->
+      <div class="card-price">
+        <h3 class="main-price">
+          <del > <small>৳</small>{{product?.price}}</del>
+        </h3>
+      </div>
+      <!--** Card-icon_menu **-->
+      <div class="card-icon-menu">
+        <ul>
+          <li [fxHide]="product?.quantity <= 0"><a (click)="addToCart($event)"><i class="fas fa-shopping-cart"></i></a></li>
+          
+
+<!--          <li><a href="#"><i class="fa fa-clone"></i></a></li>-->
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

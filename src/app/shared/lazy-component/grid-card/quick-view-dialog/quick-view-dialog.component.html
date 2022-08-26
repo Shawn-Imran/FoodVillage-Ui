@@ -1,0 +1,160 @@
+<p>quick-view-dialog works!</p>
+
+<section class="product-details">
+    <div class="container">
+
+      <!--******* details-main-area *****-->
+      <div class="product-details-main">
+        <!--**** product-img ***-->
+        <div class="product-img">
+          <!--Main Img-->
+          <div class="product-img1">
+            <img [src]="image"
+                 [alt]="product?.name"
+                 (mousemove)="onMouseMove($event)"
+                 (mouseleave)="onMouseLeave($event)">
+
+          </div>
+          <!--- slide-img -->
+          <div class="product-img-slide">
+
+            <swiper [slidesPerView]="1"
+            [loop]='true'
+            [autoplay]="{
+              delay: 4000,
+              disableOnInteraction:false
+            }"
+            [breakpoints]="{
+              '0':{
+                slidesPerView: 3,
+                spaceBetween: 15
+              },
+              '500': {
+                slidesPerView: 4,
+                spaceBetween: 20
+              }
+
+            }"
+            [navigation]="true"
+            class="mySwiper small-carousel"
+          >
+            <ng-template swiperSlide  *ngFor="let slider of product?.images; let i = index;">
+              <div class="slide-img" (click)="selectImage(slider)">
+                <img [src]="slider" [alt]="product?.productName">
+              </div>
+              </ng-template>
+          </swiper>
+
+          </div>
+        </div>
+
+        <!----***** product-info ****-->
+
+        <div class="product-info">
+
+          <div style="z-index: 9;" #zoomViewer>
+            <div *ngIf="zoomImage" class="zoom-viewer mat-elevation-z18"
+                 [ngStyle]="{'background-image': 'url(' + zoomImage + ')'}"></div>
+          </div> <!-- END IMAGE ZOOM VIEW -->
+
+          <!--- product-title -->
+          <div class="product-title">
+            <h2>{{product?.name}}</h2>
+          </div>
+
+          <!--- Product-serial-no -->
+
+
+          <!-- Product-categori -->
+
+
+          <!-- Product-tag -->
+
+
+
+          <!-- Product-price -->
+          <div class="product-price">
+            <h3 >
+              <del>৳{{product?.price | number: '': 'bn'}}</del>
+              ৳{{product? (product | price | number: '': 'bn') : 0}}
+            </h3>
+
+          </div>
+
+          <!-- Product-description -->
+         
+
+
+          <!-- Product-aad-and- item value-area  -->
+          <div class="product-btn">
+            <div class="item-btn">
+              <div id="mines" (click)="decrementQty()">
+                <button>-</button>
+              </div>
+              <div id="value">
+                <input type="text" [value]="selectedQty">
+              </div>
+              <div id="plus" (click)="incrementQty()">
+                <button>+</button>
+              </div>
+            </div>
+            <div class="add-btn" *ngIf="!existsInCart && product?.quantity > 0">
+              <a (click)="addToCart()" mat-buttton>ADD TO CART</a>
+            </div>
+            <div class="add-btn" *ngIf="existsInCart">
+              <a mat-dialog-close routerLink="/cart" style="background: #ffd200; color: #000">Go TO CART</a>
+            </div>
+          </div>
+
+          <!-- Product-add-wishlist-area -->
+
+  <!--        <div class="add-wishlist">-->
+  <!--          <ul>-->
+  <!--            <li><a href="javascript:"> <span> <i class="fa fa-heart"></i></span> Add To Wishlist</a></li>-->
+  <!--          </ul>-->
+  <!--        </div>-->
+
+          <!-- Product-social-link -->
+
+  <!--        <div class="social-link">-->
+  <!--          <ul>-->
+  <!--            <li class="change-width1"><a href="javascript:"><img src="/assets/images/junk/linkedin.svg" alt=""-->
+  <!--                                                                 class="change-width"></a></li>-->
+  <!--            <li class="change-width1"><a href="javascript:"><img src="/assets/images/junk/instagram.svg" alt=""-->
+  <!--                                                                 class="change-width"></a></li>-->
+  <!--            <li class="change-width1"><a href="javascript:"><img src="/assets/images/junk/facebook.svg" alt=""-->
+  <!--                                                                 class="change-width"></a></li>-->
+  <!--          </ul>-->
+  <!--        </div>-->
+
+          <!---product-policy-area -->
+          <div class="product-policy-area">
+            <div class="policy-menu">
+              <ul>
+                <li><a (click)="viewPolicy = 'delivery'" [ngClass]="{'active' : viewPolicy === 'delivery'}">Delivery Policies</a></li>
+                <li><a (click)="viewPolicy = 'payment'" [ngClass]="{'active' : viewPolicy === 'payment'}">Payment Policies</a></li>
+                <li><a (click)="viewPolicy = 'warranty'" [ngClass]="{'active' : viewPolicy === 'warranty'}">Warranty Policies</a></li>
+              </ul>
+            </div>
+            <div class="dv-details" [ngSwitch]="viewPolicy">
+              <div *ngSwitchCase="'delivery'" [innerHTML]="product?.deliveryPolicy | safeHtmlCustom"></div>
+              <div *ngSwitchCase="'payment'"  [innerHTML]="product?.paymentPolicy | safeHtmlCustom"></div>
+              <div *ngSwitchCase="'warranty'"  [innerHTML]="product?.warrantyPolicy | safeHtmlCustom"></div>
+              <!--            <p *ngSwitchCase="'delivery'">{{product?.deliveryPolicy ? product.deliveryPolicy : 'N/A'}}</p>-->
+              <!--            <p *ngSwitchCase="'payment'">{{product?.paymentPolicy ? product.paymentPolicy : 'N/A'}}</p>-->
+              <!--            <p *ngSwitchCase="'warranty'">{{product?.warrantyPolicy ? product.warrantyPolicy : 'N/A'}}</p>-->
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- LOADING TEMPLATE -->
+  <ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+               type="ball-clip-rotate" [fullScreen]="true"><p style="color: white"> Loading... </p></ngx-spinner>

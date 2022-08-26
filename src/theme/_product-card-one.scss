@@ -1,0 +1,268 @@
+@import "variables";
+
+/** card-code-area ***/
+.card {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  box-sizing: border-box;
+  box-shadow: 0 4px 4px 0 transparent;
+  transition: all 0.5s linear;
+  border: 1px solid #e3e4e5;
+  border-radius: 7px;
+}
+.card:hover{
+  box-shadow: 0 13px 21px -9px rgb(0 0 0 / 20%);
+}
+.card-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 230px;
+  position: relative;
+  z-index: 10;
+  margin-bottom: 15px;
+  // border-right: 1px solid #e0e0e0;
+
+}
+.card-img img {
+  max-height:230px;
+  height: 100%;
+  max-width:190px;
+  width: 100%;
+  object-fit:contain;
+}
+
+.card-hover-img {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 11;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: center center;
+  transition: all 0.3s linear;
+}
+
+.card:hover .card-hover-img {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.discount {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  display: inline-block;
+  color: #000;
+  font-weight: 600;
+  background-color:#ffd200;
+  padding: 1px 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: $font-en-primary;
+  font-size: 14px;
+  z-index: 12;
+}
+.out-stock {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  display: inline-block;
+  color: #fff;
+  font-weight: 600;
+  background-color:#be0101;
+  padding: 1px 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  font-family: $font-en-primary;
+  font-size: 14px;
+  z-index: 13;
+}
+
+
+.card-body {
+  display: block;
+  width: 92%;
+  margin: auto;
+}
+.rating-view {
+  margin-bottom: 0;
+}
+
+//.card-rating {
+//  display: block;
+//  margin-bottom: 10px;
+//}
+//
+//.card-rating ul {
+//  list-style: none;
+//  padding: 0;
+//  margin: 0;
+//}
+//
+//.card-rating ul li{
+//  display: inline-block;
+//  margin: 0;
+//  margin-right: 3px;
+//
+//}
+//.card-rating ul li i{
+//  color: #f2ba22;
+//  font-style: normal;
+//  font-family: 'Font Awesome 5 Free';
+//  font-size: 14px;
+//}
+//.card-rating ul li:last-child i{
+//  color: #cacaca;
+//}
+.card-link{
+  margin-bottom: 10px;
+}
+.card-link a {
+  color: #000;
+  font-weight: 600;
+  font-family: $font-en-primary;
+  font-size: 14px;
+  line-height: 20px;
+  transition: all 0.3s linear;
+  height: 38px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.card-link a:hover {
+  color: #be0101;
+}
+
+.price-icon {
+  position: relative;
+  z-index: 15;
+
+}
+
+.card-price {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  transition: 0.1s;
+}
+
+.main-price {
+  color: #be0101;
+  font-size: 19px;
+  font-family: $font-en-primary;
+  display: block;
+  font-weight: 600;
+
+}
+
+.main-price span {
+  color: #be0101;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.save {
+  color: #8a8787;
+  font-size: 16px;
+  display: inline-block;
+  font-weight: 400;
+  font-family: $font-en-primary;
+  margin-left: 6px;
+}
+
+.card-icon-menu {
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s linear;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 16;
+}
+
+.card-icon-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-icon-menu ul li {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.card-icon-menu ul li:last-child {
+  margin: 0;
+}
+
+.card-icon-menu ul li a {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: #2457AA;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: #fff;
+  font-style: normal;
+  font-family: $font-en-primary;
+  font-size: 16px;
+  transition: all 0.3s linear;
+
+  i {
+    color: #FFFFFF;
+  }
+}
+
+.card-icon-menu ul li a:hover {
+  background-color: #c10e0e;
+}
+
+.card:hover .card-icon-menu {
+  visibility: visible;
+  opacity: 1;
+}
+
+.card:hover .card-price {
+  visibility: hidden;
+}
+
+.d-inline {
+  display: inline-block;
+}
+
+
+/** card-responsive-area**/
+@media(max-width:450px){
+  .card{
+    box-shadow: 0 5px 7px 0 rgba(0,0,0,.1);
+  }
+  .card:hover{
+    box-shadow: 0 5px 7px 0 rgba(0,0,0,.2);
+  }
+}
+@media(max-width:400px){
+  .card-img{
+    height: 150px;
+  }
+  .card-img img{
+    max-height: 140px;
+  }
+}

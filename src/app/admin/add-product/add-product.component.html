@@ -1,0 +1,89 @@
+<div class="main">
+  <mat-card class="card">
+
+    <div class="product_image">
+      <div class="product-card">
+        <!-- card-area -->
+        <mat-card class="card-area">
+          <!-- header-card -->
+          <mat-card-header class="card-header-area">
+            <!-- card-title -->
+            <div class="card-title">
+              <mat-card-title>Add New Product
+              </mat-card-title>
+
+            </div>
+          </mat-card-header>
+
+          <!--card-content-->
+          <mat-card-content class="card-content">
+            <!--***** card-subtitle *****-->
+            <div class="sub-title">
+              <h2>image upload <span>(max 5 max image)</span></h2>
+            </div>
+            <!--***** card-plush ******-->
+            <!--            <div class="plus-box" (click)="onHoldInputData()"-->
+            <!--                 [routerLink]="[ id ? '../../../' : '../../', 'image-gallery']"-->
+            <!--                 [state]="{url: router.url}"-->
+            <!--            >-->
+            <div class="plus-box" (click)="openComponentDialog()">
+              <span>+</span>
+            </div>
+            <div *ngIf="chooseImage && chooseImage.length > 0" class="img-container" cdkDropList
+                 cdkDropListOrientation="vertical" (cdkDropListDropped)="drop($event)">
+              <div class="preview" *ngFor="let data of chooseImage" cdkDrag>
+                <img [src]="data" [alt]="data">
+                <div class="overlay-ac">
+                  <button mat-icon-button color="warn" (click)="removeSelectImage(data)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+
+        </mat-card>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="product-details">
+      <form class="example-form" [formGroup]="dataForm" (ngSubmit)="addProduct()" autocomplete="off">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Ex. X" value="Name" formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Slug</mat-label>
+          <input matInput placeholder="slug" type="text" formControlName="productSlug"
+                 required>
+          <mat-error></mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Size</mat-label>
+          <input matInput placeholder="Ex. Y" value="Size" formControlName="size">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Price</mat-label>
+          <input matInput placeholder="Ex. Y" value="Price" formControlName="price">
+        </mat-form-field>
+
+        <div class="button">
+          <button type="submit" mat-button>Submit</button>
+        </div>
+      </form>
+
+    </div>
+
+  </mat-card>
+</div>
+
+
+
+

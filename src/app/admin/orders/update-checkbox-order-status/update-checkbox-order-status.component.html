@@ -1,0 +1,46 @@
+
+<div style="position: relative">
+
+  <div class="header-dialog">
+    <h1 mat-dialog-title>Update Order Status</h1>
+  </div>
+
+  <form [formGroup]="dataForm"
+        (ngSubmit)="onSubmit()"
+        autocomplete="off"
+        #templateForm="ngForm"
+        fxLayout="column" fxLayoutAlign="space-around center">
+
+    <mat-form-field class="form-field w-100" appearance="outline">
+      <mat-label>Delivery Status</mat-label>
+      <mat-select formControlName="deliveryStatus" required>
+        <mat-option *ngFor="let c of orderStatus" [value]="c.value">{{c.viewValue}}</mat-option>
+      </mat-select>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="showDateField" class="mat-date-input-field" (click)="datepicker.open()" appearance="outline">
+      <mat-label>Select Date</mat-label>
+      <input name="selectedDate"
+             formControlName="nextPhaseDate"
+             [min]="today"
+             matInput [matDatepicker]="datepicker">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker disabled="false"></mat-datepicker>
+    </mat-form-field>
+
+
+    <div class="action">
+      <button type="button" mat-dialog-close mat-raised-button color="warn">
+        Cancel
+      </button>
+      <button mat-raised-button color="primary" type="submit">{{ 'Update Order Status' }}</button>
+    </div>
+  </form>
+</div>
+
+
+<!-- LOADING TEMPLATE -->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate" [fullScreen]="false"><p style="color: white"> Loading... </p></ngx-spinner>
+

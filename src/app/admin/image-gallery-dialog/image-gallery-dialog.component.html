@@ -1,0 +1,150 @@
+<div class="container-fluid">
+
+  <div class="close">
+    <button mat-icon-button color="warn" (click)="onCloseDialog()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="header">
+    <div class="left">
+      <button mat-raised-button color="primary" (click)="openComponentDialog(folders)">
+        <mat-icon>add</mat-icon>
+        Upload Images
+      </button>
+
+      <button *ngIf="selectedImages && selectedImages.length > 0" mat-raised-button color="warn"
+              (click)="deselectAll()">
+        <mat-icon>remove_circle_outline</mat-icon>
+        Clear All
+      </button>
+    </div>
+
+    <div class="search">
+      <form class="search-form" #searchForm=ngForm>
+        <input #searchInput
+               type="text"
+               placeholder="Search here..."
+               name="searchTerm"
+               autocomplete="off"
+               ngModel
+               required>
+        <div class="icon">
+          <mat-icon>search</mat-icon>
+        </div>
+      </form>
+    </div>
+
+  </div> <!-- END HEADER -->
+
+  <div class="content">
+    <div class="main">
+
+      <mat-form-field appearance="outline" class="mat-select-folder">
+        <mat-label>Select Folder</mat-label>
+        <mat-select [(ngModel)]="selectedFolder" name="food" (selectionChange)="onFilterSelectChange($event)">
+          <mat-option [value]="null">None</mat-option>
+          <mat-option *ngFor="let f of folders" [value]="f._id">
+            {{f.name | titlecase}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="gallery">
+        <figure
+          class="thumb"
+          *ngFor="let data of images | paginate: { itemsPerPage: productsPerPage, currentPage: currentPage, totalItems: totalProducts }"
+          (click)="onSelectImage(data)">
+          <img [src]="data.url" [alt]="data.name" class="image">
+          <div class="overlay" [fxHide]="checkSelected(data)">
+            <mat-icon>check</mat-icon>
+          </div>
+          <div class="caption">{{data.name}}</div>
+        </figure>
+      </div> <!-- END GALLERY -->
+
+      <div class="pagination-container">
+        <pagination-controls
+          class="product-pagination"
+          [autoHide]="true"
+          [maxSize]="15"
+          (pageChange)="onPageChanged($event)">
+        </pagination-controls>
+      </div>     <!-- END PAGINATION -->
+    </div>
+
+    <div class="side-bar" *ngIf="selectedImages && selectedImages.length > 0">
+
+      <div>
+        <div class="multi">
+          <div class="preview" *ngFor="let s of selectedImages" (click)="selectPreviewImage(s)">
+            <img [src]="s.url" [alt]="s.name">
+            <div class="overlay-ac">
+              <button mat-icon-button color="warn" (click)="removeSelectImage(s)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="single">
+          <img class="preview" [src]="selectPreview?.url" [alt]="selectPreview?.name">
+        </div>
+
+      </div> <!-- SELECTED IMAGE PREVIEW -->
+
+
+      <div class="action action-set-area" *ngIf="selectedImages && selectedImages.length > 0">
+        <button
+          mat-stroked-button color="primary" (click)="onCloseDialog()">
+          Set Image
+        </button>
+      </div>
+
+      <div class="edit-field" *ngIf="selectPreview">
+
+        <div class="url">
+          <p>{{selectPreview?.url}}</p>
+        </div>
+
+        <form [formGroup]="dataForm!!" (ngSubmit)="onImageDataUpdate()">
+          <mat-form-field class="mat-field" appearance="outline">
+            <mat-label>Image Name</mat-label>
+            <input formControlName="name" required matInput placeholder="Enter Image name">
+          </mat-form-field>
+
+          <mat-form-field class="mat-field" appearance="outline">
+            <mat-label>Select Folder</mat-label>
+            <mat-select formControlName="folder" required>
+              <mat-option *ngFor="let f of folders" [value]="f">
+                {{f.name | titlecase}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="form-action">
+            <button mat-raised-button color="primary" type="submit">
+              Update Info
+            </button>
+            <button mat-raised-button type="button" color="warn" (click)="deleteImages()">
+              <mat-icon>delete</mat-icon>
+              Delete
+            </button>
+          </div>
+        </form>
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+<!-- TEMPLATE NGX SPINNER-->
+<ngx-spinner style="width: 100vw; height: 100vh" bdColor="rgba(0,0,0,0.25)" size="medium" color="#fff"
+             type="ball-clip-rotate"
+             [fullScreen]="true">
+  <p style="color: white"> Loading... </p>
+</ngx-spinner>

@@ -1,0 +1,73 @@
+<div class="dialog-container">
+
+  <div class="dialog-container">
+
+    <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+      <h2>Your Info</h2>
+      <button mat-button mat-dialog-close>Cancel</button>
+    </div>
+
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()" class="form">
+
+      <div class="form-input-area" fxLayout="row wrap">
+
+        <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-label>Full Name</mat-label>
+          <input formControlName="fullName" matInput placeholder="Full Name" required>
+          <!-- <mat-icon matSuffix>call</mat-icon> -->
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-label>Phone No</mat-label>
+          <input formControlName="phoneNo" matInput placeholder="Phone No" type="tel" required>
+          <!-- <mat-icon matSuffix>account_circle</mat-icon> -->
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput placeholder="Email" required>
+          <!-- <mat-icon matSuffix>account_circle</mat-icon> -->
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-label>Gender</mat-label>
+          <mat-select placeholder="Select gender" formControlName="gender">
+            <mat-option *ngFor="let g of genders" [value]="g.value">
+              {{g.viewValue}}
+            </mat-option>
+          </mat-select>
+          <mat-error>Field is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100" (click)="dateOfBirth.open()">
+          <mat-label>Date of Birth</mat-label>
+          <input readonly matInput [matDatepicker]="dateOfBirth" formControlName="birthdate">
+          <mat-datepicker-toggle matSuffix [for]="dateOfBirth"></mat-datepicker-toggle>
+          <mat-datepicker #dateOfBirth></mat-datepicker>
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="form-field px-1" fxFlex.gt-xs="50" fxFlex="100">
+          <mat-label>Occupation</mat-label>
+          <input formControlName="occupation" matInput placeholder="Occupation">
+          <!-- <mat-icon matSuffix>account_circle</mat-icon> -->
+          <mat-error>This field is required</mat-error>
+        </mat-form-field>
+
+      </div>
+      <div class="action-area">
+        <button mat-raised-button color="primary" type="submit">
+          Update
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+
+</div>
+

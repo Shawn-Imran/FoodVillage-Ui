@@ -1,0 +1,89 @@
+<div class="p-1">
+  <mat-card class="p-0">
+    <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="w-100 p-2 header">
+      <h2 class="pl-1 title-big">Order Details</h2>
+      <div class="line"></div>
+    </div>
+
+    <div class="table-container" *ngIf="order && order.orderedItems">
+      <table>
+        <thead>
+        <tr class="table-head">
+          <th scope="col">{{'Name'}}</th>
+          <th scope="col">{{'Image'}}</th>
+          <th scope="col">{{'Category'}}</th>
+          <th scope="col">{{'Sub category'}}</th>
+          <th scope="col">{{'Brand'}}</th>
+          <th scope="col">{{'Unit Price'}}</th>
+          <th scope="col">{{'Quantity'}}</th>
+          <th scope="col">{{'Sub Total'}}</th>
+        </tr>
+        </thead> <!-- End Table Head -->
+        <tr *ngFor="let data of order?.orderedItems; let i = index">
+          <td [attr.data-label]="'Name'">{{data.product.productName}}</td>
+          <td [attr.data-label]="'Image'">
+            <img class="img-thumb" [src]="data.product.images && data.product.images.length > 0 ? data.product.images[0] : '/assets/images/placeholder/test.png'"
+                 [alt]="data.product.productName">
+          </td>
+          <td [attr.data-label]="'Category'">{{data.product.categorySlug | slugToNormal}}</td>
+          <td [attr.data-label]="'Sub category'">{{data.product.subCategorySlug | slugToNormal}}</td>
+          <td [attr.data-label]="'Brand'">{{data.product.brandSlug | slugToNormal}}</td>
+          <td [attr.data-label]="'Unit Price'">{{data.price}}</td>
+          <td [attr.data-label]="'Quantity'">{{data.quantity}}</td>
+          <td [attr.data-label]="'Sub Total'">{{data.price * data.quantity}}</td>
+
+        </tr><!-- End Table Body -->
+
+      </table>
+    </div>
+
+    <div class="checkout-summary">
+
+      <div class="left">
+        <div class="info">
+          <h3>Shipping Info</h3>
+          <p>Name: <span>{{order?.name}}</span></p>
+          <p>Phone No: <span>{{order?.phoneNo}}</span></p>
+          <p>Other Phone: <span>{{order?.alternativePhoneNo ? order?.alternativePhoneNo : 'N/A'}}</span></p>
+          <p>Email: <span>{{order?.email ? order.email : 'N/A'}}</span></p>
+          <p>City: <span>{{order?.city}}</span></p>
+          <p>Shipping Address: <span>{{order?.shippingAddress}}</span></p>
+          <p style="background: #ce0000; color: #FFFFFF; padding: 10px; text-align: justify; line-height: 20px">{{order.orderNotes? order.orderNotes : ''}}</p>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="title">
+          <h3>Checkout Summary</h3>
+        </div>
+
+        <ul class="payable-total">
+          <li>
+            <span>Subtotal</span>
+            <span>{{order?.subTotal}} TK.</span>
+          </li>
+          <li>
+            <span>Shipping</span>
+            <span>{{order?.shippingFee}} TK.</span>
+          </li>
+          <li>
+            <span>Total</span>
+            <span>{{order?.subTotal + order?.shippingFee}} TK.</span>
+          </li>
+          <li>
+            <span>Discount amount</span>
+            <span>{{order?.discount ? order.discount : '0'}} TK.</span>
+          </li>
+          <li>
+            <span>Payable Total</span>
+            <span>{{order?.totalAmount - order?.discount}} TK.</span>
+          </li>
+        </ul>
+      </div>
+
+
+    </div> <!-- END RIGHT CHECKOUT VIEW -->
+
+
+  </mat-card>
+</div>

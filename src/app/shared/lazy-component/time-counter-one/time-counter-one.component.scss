@@ -1,0 +1,55 @@
+@import "src/theme/variables";
+
+.clock {
+  border: 1px solid #E5E5E5;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  padding: 8px 2px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+
+.time {
+  max-width: 75px;
+  width: 100%;
+  text-align: center;
+  border-right: 1px solid #E5E5E5;
+}
+.time:last-child{
+  border: none;
+}
+
+.time h3 {
+  color: #000;
+  font-weight: 600;
+  font-style: normal;
+  display: block;
+  font-family: $font-en-primary;
+  font-size: 17px;
+  line-height: 20px;
+  margin-bottom: 4px;
+}
+
+.time span {
+  font-size: 13px;
+  font-weight: 500;
+  font-family: $font-en-primary;
+  color: #000;
+}
+
+@media(max-width: 756px) {
+  .clock {
+    margin: 0 auto 20px;
+  }
+  .time h3 {
+    font-size: 16px;
+  }
+  .time span {
+    font-size: 13px;
+  }
+}

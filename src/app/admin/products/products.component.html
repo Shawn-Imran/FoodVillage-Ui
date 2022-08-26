@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Products List</h2>
+  <table >
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Size</th>
+        <th>price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td><img [src]="product.images"  class="image"></td>
+        <td>{{product.name}}</td>
+        <td>{{product.size}}</td>
+        <td>{{product.price}}</td>
+        <td>
+          <div class="actions">
+            <button type="button" mat-raised-button color="primary"[routerLink]="['edit-product', product._id]">Edit</button>&nbsp;&nbsp;
+            <button type="button" mat-raised-button color="accent"[routerLink]="['view-product', product._id]">View</button>&nbsp;&nbsp;
+            <button type="button" mat-raised-button color="warm" (click)="delete_product(product._id)">Delete</button>&nbsp;&nbsp;
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br>
+  <div class="button">
+    <button type="button" mat-raised-button color="primary" (click)="add_product()">Add New Product</button>
+  </div>
+</div>

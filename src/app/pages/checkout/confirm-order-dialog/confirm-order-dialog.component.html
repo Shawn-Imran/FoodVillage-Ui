@@ -1,0 +1,120 @@
+<div class="dialog-view-container">
+  <section class="cart-section">
+    <div class="container">
+
+      <form action="#">
+        <!--cart-section-main-->
+        <div class="cart-main-section">
+          <!--cart-title-and-menu-->
+          <div class="cart-title-menu clearfix">
+            <!--cart-title-->
+            <div class="cart-title">
+              <h2>Order Confirmation</h2>
+            </div>
+          </div>
+
+          <div class="payment-type">
+            <h2>{{order?.totalAmountWithDiscount < 10 ? 'Order total below ৳10, Cash On Delivery selected by default' : (selectedPaymentType | slugToNormal: '_')}}</h2>
+          </div>
+
+          <!---cart-product-details-->
+          <div class="cart-product-details">
+            <!--cart-product-head-->
+            <div class="cart-product-head">
+              <div class="product-title display-none">
+                <h2></h2>
+              </div>
+              <div class="product-title display-none">
+                <h2>Product</h2>
+              </div>
+              <div class="product-price display-none">
+                <h2>Price</h2>
+              </div>
+              <div class="product-Quantity display-none">
+                <h2>Quantity</h2>
+              </div>
+              <div class="product-subtotal display-none">
+                <h2> Subtotal</h2>
+              </div>
+            </div>
+            <!--cart-product-body-->
+            <div *ngFor="let c of carts; let i = index;" class="cart-product-body">
+
+              <!--thumnil-->
+              <div class="product-thumnil change-height width-change">
+                <img
+                  [src]="c?.product.images && c?.product.images.length > 0? c?.product.images[0] : '/assets/images/placeholder/test.png'"
+                  [alt]="c?.product?.productName">
+              </div>
+              <!--product-title-->
+              <div class="product-title change-height width-change">
+                <h2>Product:</h2>
+                <a href="javascript:">{{c?.product?.productName}}</a>
+              </div>
+              <!---product-price-->
+              <div class="product-price change-height width-change">
+                <h2>Price:</h2>
+                <span>৳ {{(c?.product | price: 'priceWithDiscount') }}</span>
+              </div>
+
+              <!---product-quantity-->
+              <div class="product-price change-height width-change">
+                <h2>Quantity:</h2>
+                <span>{{c?.selectedQty}}</span>
+              </div>
+              <!--subtotal-->
+              <div class="product-subtotal change-height width-change">
+                <h2>Subtotal:</h2>
+                <span>৳ {{((c?.product | price: 'priceWithDiscount') * c?.selectedQty) }}</span>
+              </div>
+            </div> <!-- ITEM 1 -->
+
+          </div><!---end-->
+        </div>
+      </form>
+    </div>
+  </section> <!-- END CART ITEM VIEW -->
+
+  <!--cart-section2-->
+  <div class="cart-section2">
+    <div class="container">
+      <div class="cart-section2-main">
+        <!--cart-section2-table-->
+        <div class="cart-section2-table">
+          <table>
+            <tr class="clearfix">
+              <th>Subtotal</th>
+              <td><p>৳ {{order?.subTotal}}</p></td>
+            </tr>
+            <tr class="clearfix">
+              <th>Shipping</th>
+              <td>
+                <p><strong>৳ {{order?.shippingFee}}</strong></p>
+              </td>
+            </tr>
+            <tr class="clearfix">
+              <th>Total</th>
+              <td><h3>৳ {{order?.totalAmount}}</h3></td>
+            </tr>
+            <tr class="clearfix" *ngIf="order?.couponId">
+              <th>Discount (Coupon)</th>
+              <td><h3>- ৳ {{order?.discount}}</h3></td>
+            </tr>
+            <tr class="clearfix" *ngIf="order?.couponId">
+              <th>Total (with Discount)</th>
+              <td><h3>৳ {{order?.totalAmountWithDiscount}}</h3></td>
+            </tr>
+          </table>
+        </div>   <!--cart-section2-table-end-->
+
+        <!--cart-section2-->
+        <div class="cart-section2-btn flex-view">
+          <a class="cancel" (click)="isConfirmOrder(false)">Close</a>
+          <a (click)="isConfirmOrder(true)">Confirm Order</a>
+        </div>
+      </div>
+    </div>
+  </div> <!-- END CALCULATION AREA -->
+</div>
+
+

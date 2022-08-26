@@ -1,0 +1,48 @@
+
+
+
+
+<div class="top-action">
+  <button mat-raised-button color="primary" [routerLink]="['add-image-folder']">
+    <mat-icon>add</mat-icon>
+    Add New Folder
+  </button>
+</div>
+
+
+
+<div class="header">
+  <h2>Folder List</h2>
+</div>
+
+<hr class="center-square">
+
+
+<div class="table-container">
+  <table>
+    <thead>
+    <tr class="table-head">
+      <th scope="col">{{'Name'}}</th>
+      <th scope="col">{{'Slug'}}</th>
+      <th scope="col">{{'Created At'}}</th>
+      <th scope="col">{{'Actions'}}</th>
+    </tr>
+    </thead> <!-- End Table Head -->
+    <tr *ngFor="let data of folders; let i = index">
+      <td [attr.data-label]="'Name'">{{data.name}}</td>
+      <td [attr.data-label]="'Slug'">{{data.slug}}</td>
+      <td [attr.data-label]="'Created At'">{{data.createdAt | date}}</td>
+      <td [attr.data-label]="'Actions'">
+        <button [disabled]="data.readOnly" style="margin-right: 5px;" mat-mini-fab color="warn" (click)="openConfirmDialog(data._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button [disabled]="data.readOnly" [routerLink]="['edit-image-folder', data._id]" mat-mini-fab>
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </tr><!-- End Table Body -->
+
+  </table>
+
+</div>
+

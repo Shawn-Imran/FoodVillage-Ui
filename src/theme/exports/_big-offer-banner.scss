@@ -1,0 +1,30 @@
+@import "../variables";
+
+.big-offer-banner {
+  width: 100%;
+  max-width: $theme-container-width;
+  margin: 16px auto;
+
+  a {
+    width: 100%;
+
+    img {
+      width: 100%;
+      // height: 250px;
+      //object-fit: cover;
+    }
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .big-offer-banner {
+    padding: 0px 0px;
+    a {
+      img {
+        height: auto;
+        max-height: 200px;
+        object-fit: contain;
+      }
+    }
+  }
+}

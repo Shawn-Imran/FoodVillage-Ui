@@ -1,0 +1,303 @@
+@import "src/theme/exports/search";
+
+.container-fluid {
+  width: 85%;
+  margin: 0 auto;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 16px 0;
+
+  .left {
+    display: flex;
+    gap: 12px;
+
+    button {
+      ::ng-deep {
+        span {
+          color: #FFFFFF;
+        }
+      }
+    }
+  }
+}
+
+.mat-select-folder {
+  width: 320px;
+}
+
+
+.content {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-top: 40px;
+
+
+  .main {
+    flex: 1;
+  }
+
+  .side-bar {
+    width: 340px;
+    background: #ECECEC;
+
+
+    .single {
+      width: 100%;
+      margin-top: 16px;
+      .preview {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+    .multi {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 8px;
+      .preview {
+        height: 125px;
+      }
+
+    }
+
+
+    .preview {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      cursor: pointer;
+
+      &:hover {
+        .overlay-ac {
+          visibility: visible;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .overlay-ac {
+        visibility: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        place-items: center;
+        background: rgba(6, 6, 6, 0.19);
+      }
+    }
+
+    .action {
+      padding: 16px 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 12px;
+    }
+
+  }
+
+}
+
+.action-set-area {
+  width: 100%;
+  text-align: center;
+  button {
+    width: 100%;
+  }
+}
+
+.form-action {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 2px;
+  transition: .3s;
+  gap: 16px;
+
+  .thumb {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 200px;
+    background: #727272;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      .caption {
+        opacity: 1;
+      }
+    }
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.51);
+    display: grid;
+    place-items: center;
+
+    mat-icon {
+      width: 48px;
+      font-size: 48px;
+      color: #d5d5d5;
+    }
+  }
+
+  .caption {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    //font-size: 16px;
+    color: white;
+    opacity: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, .5) 0%, rgba(255, 255, 255, 0) 100%);
+    transition: .3s;
+  }
+
+
+}
+
+.edit-field {
+  width: 95%;
+  margin: 8px auto;
+  .mat-field {
+    width: 100%;
+  }
+
+  .url {
+    width: 85%;
+    border: 1px solid #bdbdbd;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    height: auto;
+    overflow: hidden;
+    text-wrap: normal;
+    p {
+      overflow-wrap: break-word;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+.pagination-container {
+  margin-top: 16px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1440px) {
+  .gallery {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 2px;
+    transition: .3s;
+    gap: 16px;
+  }
+}
+
+
+@media only screen and (min-width: 960px) and (max-width: 1199px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2px;
+    transition: .3s;
+    gap: 16px;
+  }
+}
+
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+
+  .container-fluid {
+    width: 100%;
+    padding: 0 16px;
+  }
+  .content {
+    gap: 12px;
+    .side-bar {
+      width: 260px;
+    }
+
+  }
+
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 2px;
+    transition: .3s;
+    gap: 16px;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  .header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 16px 0;
+    gap: 12px;
+
+    .left {
+      display: flex;
+      gap: 12px;
+    }
+  }
+
+
+  .container-fluid {
+    width: 100%;
+    padding: 0;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    .main {
+      flex: 1;
+    }
+    .side-bar {
+      width: 100%;
+
+    }
+
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2px;
+    transition: .3s;
+    gap: 16px;
+  }
+
+}

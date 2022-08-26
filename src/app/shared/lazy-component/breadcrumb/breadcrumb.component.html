@@ -1,0 +1,12 @@
+<section class="breadcrumb-area">
+
+  <div class="breadcrumb-menu">
+    <ul>
+      <li *ngFor="let b of data; let l = last; let f = first">
+        <a [class.last-item]="l" [routerLink]="b.url"> {{b.label}} <span [fxHide]="l"><i
+          class="fa fa-angle-right"></i></span></a>
+      </li>
+    </ul>
+
+  </div>
+</section>

@@ -1,0 +1,84 @@
+<!--&lt;!&ndash;-******* section-4 ******&ndash;&gt;-->
+<!--<section class="section-4">-->
+<!--  <div class="container">-->
+
+<!--    &lt;!&ndash;-** section4-main ***&ndash;&gt;-->
+
+<!--    <div class="section4-main">-->
+<!--      <div class="section4-cards">-->
+
+<!--        &lt;!&ndash;** card ***&ndash;&gt;-->
+<!--        -->
+
+
+
+<!--      </div>-->
+<!--    </div>&lt;!&ndash;********** section4-main end *******&ndash;&gt;-->
+
+
+<!--  </div>-->
+<!--</section>-->
+
+
+<div class="card">
+  <!--** card-img ***-->
+  <div class="card-img">
+    <a href="#" target="_blank">
+      <img [src]="product?.images && product?.images.length > 0 ? product.images[0] : '/assets/images/placeholder/test.png'"
+                                     [alt]="product?.productName">
+    </a>
+    <!--** card-hover-img **-->
+    <div class="card-hover-img">
+      <a href="#" target="_blank">
+        <img [src]="product?.images && product?.images.length > 0 ? product.images[0] : '/assets/images/placeholder/test.png'"
+             [alt]="product?.productName">
+      </a>
+    </div>
+    <!--** discount-area **-->
+    <span class="discount">-{{product?.discountAmount}}%</span>
+  </div>
+  <!--** card-body-area **-->
+  <div class="card-body">
+    <!--** card-rating **-->
+    <div class="card-rating">
+      <ul>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+      </ul>
+    </div>
+    <!--** Card-discription**-->
+    <div class="card-link">
+      <a href="#" target="_blank">{{product?.productName}}</a>
+    </div>
+    <!--*******categori*********-->
+    <div class="categori">
+      <h3>Categori: <a href="#">first</a></h3>
+    </div>
+    <!--*******categori*********-->
+    <div class="sub-categori">
+      <h3>Sub-Categori: <a href="#">first</a></h3>
+    </div>
+    <!--*******brand*********-->
+    <div class="brand">
+      <h3>Brand: <a href="#">first</a></h3>
+    </div>
+    <!--** price-and-Icon-menu ***-->
+    <div class="price-icon">
+      <!--** price **-->
+      <div class="card-price">
+        <h3 class="main-price"><span>৳</span>185.00 <del class="save"> <small>৳</small>150.00</del></h3>
+      </div>
+      <!--** Card-icon_menu **-->
+      <div class="card-icon-menu">
+        <ul>
+          <li><a href="#"><i class="fa fa-eye"></i></a></li>
+          <li><a href="#"><i class="fa fa-trash-alt"></i></a></li>
+          <li><a [routerLink]="['/' + adminUrl, 'add-product', 'edit', product?._id]"><i class="fa fa-user-edit"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div><!--** card-end **-->

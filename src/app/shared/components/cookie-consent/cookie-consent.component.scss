@@ -1,0 +1,60 @@
+@import "src/theme/variables";
+
+.view {
+  background: #DBDBDB;
+  width: 95%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+  position: fixed;
+  bottom: -1000px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  border-radius: 10px;
+  transition: 1s all linear;
+
+
+  .txt {
+    width: 100%;
+
+    p {
+      font-family: $font-en-primary;
+      font-weight: 500;
+      color: #000;
+    }
+  }
+
+  .action {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+
+    button {
+      width: 160px;
+      background: #24273F;
+      color: #FFFFFF;
+      padding: 4px 0;
+
+      span {
+        font-family: $font-en-primary;
+        font-weight: 500;
+      }
+    }
+
+    a {
+      width: 160px;
+      background: #757575;
+      font-family: $font-en-primary;
+      font-weight: 500;
+      padding: 4px 0;
+      color: #FFFFFF;
+    }
+  }
+}
+
+.show-cookie {
+  bottom: 8px;
+}

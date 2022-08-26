@@ -1,0 +1,16 @@
+<mat-toolbar class="toolbar">
+  <div class="menu">
+    <button mat-button [matMenuTriggerFor]="menu"> <mat-icon>menu</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Home</button>
+      <button mat-menu-item>Contacy Us</button>
+      <button mat-menu-item>About Us</button>
+    </mat-menu>
+  </div>
+  <h2 routerLink="/"><strong>𝐹𝑜𝑜𝒹𝒱𝒾𝓁𝓁𝒶𝑔𝑒</strong></h2>
+  <span class="example-spacer"></span>
+  <button mat-button id="btn-profile" routerLink="/product-list">Products</button>
+  <button mat-raised-button id="btn-login" routerLink="/login">Login</button>
+  <button mat-raised-button color="primary" id="btn-register" routerLink="/registration">Register</button>
+  <button mat-button id="btn-profile" routerLink="/user-profile">Profile</button>
+</mat-toolbar>

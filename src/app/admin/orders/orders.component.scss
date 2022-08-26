@@ -1,0 +1,113 @@
+@import "src/theme/exports/table-one";
+@import "src/theme/exports/search";
+
+
+
+/*----------------
+TOP ACTION
+------------------*/
+.top-action {
+  margin-top: 16px;
+  padding-right: 16px;
+
+  display: flex;
+  justify-content: space-between;
+
+  .select-area {
+    padding-left: 16px;
+    .mat-radio-button ~ .mat-radio-button {
+      margin-left: 16px;
+    }
+  }
+
+
+  button {
+    ::ng-deep {
+      span {
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+/*----------------
+Filter Section
+------------------*/
+.filter-area {
+  width: 100%;
+
+  .filter-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  mat-card {
+    .filter-form-field, .mat-date-input-field {
+      width: 350px;
+    }
+  }
+}
+
+.search-area {
+  margin-top: 6px;
+}
+
+
+
+/*----------------
+HEADER TITLE
+------------------*/
+.header {
+  h2 {
+    text-align: center;
+    font-family: $font-en-primary;
+  }
+}
+
+.table-container{
+  button{
+    margin-right: 5px;
+  }
+}
+
+
+.pagination-container {
+  text-align: center;
+}
+
+.unpaid {
+  background: #ff6e7b;
+  text-transform: uppercase;
+  color: #57030a;
+}
+.italic {
+  font-style: italic;
+  font-weight: bold;
+}
+
+.paid {
+  background: #01ca75;
+  text-transform: uppercase;
+  color: #00351c;
+}
+
+.cancel {
+  color: #ad0228;
+}
+
+.processing {
+  color: #000000;
+}
+.confirm {
+  color: #00c14c;
+}
+.delivered, .refund, .shipping {
+  color: #00c14c;
+}
+
+
+.clear-filter {
+  text-align: right;
+  padding: 8px 12px;
+}
+
+

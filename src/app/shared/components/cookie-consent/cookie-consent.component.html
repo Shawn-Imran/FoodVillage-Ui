@@ -1,0 +1,14 @@
+<div class="view" [class.show-cookie]="!hideCookie">
+  <div class="txt">
+    <p>This website uses cookies to improve user experience. By using our website you consent to all cookies in accordance with our Cookie Policy</p>
+  </div>
+  <div class="action">
+    <button mat-button (click)="onAccept()">
+      <mat-icon>cookie</mat-icon>
+      Accept
+    </button>
+    <a mat-button routerLink="/pages/cookies-terms">
+      Read Cookie Policy
+    </a>
+  </div>
+</div>

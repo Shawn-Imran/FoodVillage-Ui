@@ -1,0 +1,95 @@
+<section class="main-container cart-section">
+  <div class="container">
+
+    <div>
+      <!--cart-section-main-->
+      <div class="cart-main-section">
+        <!--cart-title-and-menu-->
+        <div class="cart-title-menu clearfix">
+          <!--cart-title-->
+          <div class="cart-title">
+            <h2>Cart</h2>
+          </div>
+        </div>
+
+        <!---cart-product-details-->
+        <div class="cart-product-details">
+          <!--cart-product-head-->
+          <div class="cart-product-head">
+            <div class="product-remove display-none"></div>
+            <div class="product-thumnil display-none"></div>
+            <div class="product-title display-none">
+              <h2>Product</h2>
+            </div>
+            <div class="product-price display-none">
+              <h2>Price</h2>
+            </div>
+            <div class="product-Quantity display-none">
+              <h2>Quantity</h2>
+            </div>
+            <div class="product-subtotal display-none">
+              <h2> Subtotal</h2>
+            </div>
+          </div>
+          <!--cart-product-body-->
+          <div *ngFor="let c of carts; let i = index;" class="cart-product-body">
+            <!--remove-->
+            <div class="product-remove change-height width-change" (click)="onDeleteCartItem(c?._id, c?.product?._id)">
+              <span>X</span>
+            </div>
+            <!--thumnil-->
+            <div class="product-thumnil change-height width-change">
+              <img
+                [src]="c?.product.images && c?.product.images.length > 0? c?.product.images[0] : '/assets/images/placeholder/test.png'"
+                [alt]="c?.product?.productName">
+            </div>
+            <!--product-title-->
+            <div class="product-title change-height width-change">
+              <h2>Product:</h2>
+              <a href="javascript:">{{c?.product?.productName}}</a>
+            </div>
+            <!---product-price-->
+            <div class="product-price change-height width-change">
+              <h2>Price:</h2>
+              <span>৳{{c?.product | price: 'priceWithDiscount' | number: '': 'bn'}}</span>
+            </div>
+
+            <!--quantity-->
+            <div class="product-Quantity change-height width-change">
+              <h2>Quantity:</h2>
+              <div class="quantity-btn ">
+                <div>
+                  <button id="cart-mines" type="button" (click)="decrementQty(c?._id, i, c?.selectedQty)">-</button>
+                </div>
+                <div>
+                  <input type="text" name="item" [value]="c?.selectedQty" id="cart-value">
+                </div>
+                <div>
+                  <button type="button" id="cart-plus" (click)="incrementQty(c?._id, i)">+</button>
+                </div>
+              </div>
+            </div>
+            <!--subtotal-->
+            <div class="product-subtotal change-height width-change">
+              <h2>Subtotal:</h2>
+              <span>৳{{(c?.product | price: 'priceWithDiscount') * c?.selectedQty  | number: '': 'bn'}}</span>
+            </div>
+          </div> <!-- ITEM 1 -->
+
+          <!--coupon and update-->
+          <div class="cart-cupon-and-btn-section" *ngIf="carts && carts.length > 0">
+
+            <div class="cart-close">
+              <button type="button" (click)="onRemove()">No Thanks</button>
+            </div>
+
+            <div class="cart-update">
+              <button type="button" (click)="onUpdateCart()">Update Cart</button>
+            </div>
+
+          </div>
+        </div><!---end-->
+      </div>
+    </div>
+  </div>
+</section> <!-- END CART ITEM VIEW -->

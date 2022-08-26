@@ -1,0 +1,25 @@
+.dialog-container {
+  width: 100%;
+  margin: 16px auto;
+  max-width: 480px;
+}
+
+.header {
+  padding: 12px 10px;
+}
+
+.form-radio {
+  margin: 8px 0;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+
+.action-area {
+  width: 85%;
+  margin: 0 auto;
+
+  button {
+    width: 100%;
+  }
+}

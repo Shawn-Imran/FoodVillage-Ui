@@ -1,0 +1,75 @@
+@import "src/theme/product-details";
+@import'../../../../../theme/swipper.scss';
+
+.product-details{
+  width: 100%;
+  max-width: 1200px;
+  max-height: 600px;
+  padding: 0 16px;
+  margin: 0 auto;
+  overflow-y: auto;
+
+  .container {
+    position: relative;
+
+    .btn-close {
+      position: absolute;
+      top: 5px;
+      right: 0;
+      z-index: 99;
+    }
+  }
+}
+.product-details::-webkit-scrollbar,.product-details::-moz-scrollbar{
+  background-color: #fff;
+  width: 10px;
+}
+.product-details::-webkit-scrollbar-thumb,.product-details::-moz-scrollbar-thumb{
+  background-color: #757575;
+  border-radius: 20px;
+}
+
+.product-discription {
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.zoom-viewer {
+  width: 100%;
+  background: #FFFFFF;
+
+  img {
+    width: 100%;
+    max-width: 610px;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.section-recommended {
+  padding: 0 16px;
+  .wrap-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px 20px;
+    grid-template-rows: auto;
+    padding-top: 20px;
+  }
+}
+
+
+
+@media only screen and (max-width: 600px){
+  .product-details{
+    .container {
+      .btn-close {
+        position: fixed;
+      }
+    }
+  }
+}
+
+
+.add-btn a{
+  padding: 9px 5px;
+}

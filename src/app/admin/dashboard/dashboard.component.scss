@@ -1,0 +1,165 @@
+.button1 { grid-area: products; }
+.button2 { grid-area: orders; }
+.button3 { grid-area: users; }
+.button4 { grid-area: adminprofile; }
+
+.main{
+  max-width: 485px;
+  height:350px;
+  background-color: #5fd45b;
+  border: none;
+  border-radius: 5px;
+  margin-top:auto;
+  margin-bottom:auto;
+  margin-left:auto;
+  margin-right:auto;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+}
+
+.dashboard{
+
+  height: 250px;
+  padding-top: 50px;
+  display: grid;
+  column-gap: 20px;
+  grid-template-areas:
+  'products orders'
+  'image-gallery image-folder'
+  'users admins'
+  'adminprofile adminprofile';
+
+
+  .button1{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+
+    .btn1{
+      width: 100px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      border: none;
+      font-size: 20px;
+    }
+  }
+
+  .button2{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    .btn2{
+      width: 90px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      border: none;
+      font-size: 20px;
+    }
+  }
+
+
+  .button12{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn3{
+      width: 150px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      border: none;
+      font-size: 20px;
+
+    }
+  }
+
+
+  .button22{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn3{
+      width: 150px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      border: none;
+      font-size: 20px;
+
+    }
+  }
+
+
+  .button3{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn3{
+      width: 90px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      border: none;
+      font-size: 20px;
+
+    }
+  }
+  .button31{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn3{
+      width: 90px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      border: none;
+      font-size: 20px;
+
+    }
+  }
+
+  .button4{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .btn4{
+      width: 150px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 3px;
+      border: none;
+      font-size: 20px;
+
+    }
+  }
+}
